@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Test1.Server.Data;
 
@@ -11,9 +12,10 @@ using Test1.Server.Data;
 namespace Test1.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230824164251_SeededDefaultCarData")]
+    partial class SeededDefaultCarData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,22 +190,6 @@ namespace Test1.Server.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "9e24a193-1061-45cd-be67-46cd9f4aceda",
-                            ConcurrencyStamp = "388d370f-9cbb-4d6f-8991-9a59ac643949",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "9e24a193-1061-45cd-be67-16cd9f4acedb",
-                            ConcurrencyStamp = "18916e30-b381-4091-b7dd-87cd4014215b",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -293,18 +279,6 @@ namespace Test1.Server.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "52cfd4d1-bde3-45dd-86a1-e74c5dfb8a92",
-                            RoleId = "9e24a193-1061-45cd-be67-16cd9f4acedb"
-                        },
-                        new
-                        {
-                            UserId = "8a721152-96bd-432a-9b97-06ab6d7b6fee",
-                            RoleId = "9e24a193-1061-45cd-be67-46cd9f4aceda"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -397,44 +371,6 @@ namespace Test1.Server.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "52cfd4d1-bde3-45dd-86a1-e74c5dfb8a92",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "aa1de3d2-a2a7-4377-820e-7ecce57e15d9",
-                            Email = "admin@localhost.com",
-                            EmailConfirmed = false,
-                            FirstName = "System",
-                            LastName = "Admin",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@LOCALHOST.COM",
-                            NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGF++QIB9Fs/9eHaFFlaNdqcfLZGYFmnb9ZFaeqCU7yhZ0xML97lDm1FJ/YGiHVTag==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "87495f4e-0f4d-461f-bf5e-6ee4568812e8",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@localhost.com"
-                        },
-                        new
-                        {
-                            Id = "8a721152-96bd-432a-9b97-06ab6d7b6fee",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "9ece7d04-8455-4022-9670-c814fb3c2df0",
-                            Email = "user@localhost.com",
-                            EmailConfirmed = false,
-                            FirstName = "System",
-                            LastName = "User",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "USER@LOCALHOST.COM",
-                            NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDI5IWtDzLh63XgeJgEO2Fiw0o5rNYDT3ePhhUbdqIfO5RsUki3lL/ncWVvqJND8mg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "5309bd4f-2963-4c9e-a9e0-2fbe7c6648e2",
-                            TwoFactorEnabled = false,
-                            UserName = "user@localhost.com"
-                        });
                 });
 
             modelBuilder.Entity("Test1.Shared.Domain.Booking", b =>
@@ -510,8 +446,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2116),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2142),
+                            DateCreated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7437),
+                            DateUpdated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7464),
                             Name = "Black",
                             UpdatedBy = "System"
                         },
@@ -519,8 +455,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2144),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2146),
+                            DateCreated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7466),
+                            DateUpdated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7468),
                             Name = "Blue",
                             UpdatedBy = "System"
                         });
@@ -595,8 +531,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2279),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2281),
+                            DateCreated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7597),
+                            DateUpdated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7600),
                             Name = "Toyota",
                             UpdatedBy = "System"
                         },
@@ -604,8 +540,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2283),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2285),
+                            DateCreated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7602),
+                            DateUpdated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7603),
                             Name = "BMW",
                             UpdatedBy = "System"
                         });
@@ -643,8 +579,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2341),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2343),
+                            DateCreated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7657),
+                            DateUpdated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7659),
                             Name = "Prius",
                             UpdatedBy = "System"
                         },
@@ -652,8 +588,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2345),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2346),
+                            DateCreated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7661),
+                            DateUpdated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7662),
                             Name = "Vitz",
                             UpdatedBy = "System"
                         },
@@ -661,8 +597,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2348),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2349),
+                            DateCreated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7664),
+                            DateUpdated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7666),
                             Name = "3 Series",
                             UpdatedBy = "System"
                         },
@@ -670,8 +606,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2351),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2352),
+                            DateCreated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7668),
+                            DateUpdated = new DateTime(2023, 8, 24, 18, 42, 51, 616, DateTimeKind.Local).AddTicks(7669),
                             Name = "X5",
                             UpdatedBy = "System"
                         });
