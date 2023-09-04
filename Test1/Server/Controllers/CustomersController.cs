@@ -8,7 +8,7 @@ using Test1.Shared.Domain;
 namespace Test1.Server.Controllers
 {
     //[Authorize]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {

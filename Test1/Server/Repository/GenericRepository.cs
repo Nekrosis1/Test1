@@ -22,6 +22,7 @@ namespace Test1.Server.Repository
 
         public void DeleteRange(IEnumerable<T> entities)
         {
+            _db.Any(e => entities.Contains(e)); 
             _db.RemoveRange(entities);
         }
 

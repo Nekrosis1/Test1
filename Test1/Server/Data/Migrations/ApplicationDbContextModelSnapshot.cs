@@ -193,14 +193,14 @@ namespace Test1.Server.Data.Migrations
                         new
                         {
                             Id = "9e24a193-1061-45cd-be67-46cd9f4aceda",
-                            ConcurrencyStamp = "388d370f-9cbb-4d6f-8991-9a59ac643949",
+                            ConcurrencyStamp = "3fbe2435-ed56-47af-bf3f-43e332a9b5c1",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = "9e24a193-1061-45cd-be67-16cd9f4acedb",
-                            ConcurrencyStamp = "18916e30-b381-4091-b7dd-87cd4014215b",
+                            ConcurrencyStamp = "13f7a12c-f211-49c1-bb6b-143fa15ca8bf",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -403,7 +403,7 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = "52cfd4d1-bde3-45dd-86a1-e74c5dfb8a92",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "aa1de3d2-a2a7-4377-820e-7ecce57e15d9",
+                            ConcurrencyStamp = "c2e9b975-db83-478b-83ec-bfdbb7bd665f",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "System",
@@ -411,9 +411,9 @@ namespace Test1.Server.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGF++QIB9Fs/9eHaFFlaNdqcfLZGYFmnb9ZFaeqCU7yhZ0xML97lDm1FJ/YGiHVTag==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEArMzLDt4cTq+iCIO3S/c2/caVWKa4MZqJRR2iWBSK0+8P2t50AojmNwQK6aYX9DQA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "87495f4e-0f4d-461f-bf5e-6ee4568812e8",
+                            SecurityStamp = "c74a1498-c9f6-4b7f-9b0c-09429e08815e",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -421,7 +421,7 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = "8a721152-96bd-432a-9b97-06ab6d7b6fee",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9ece7d04-8455-4022-9670-c814fb3c2df0",
+                            ConcurrencyStamp = "71bf6df3-a43c-4f3b-a958-6f4e1805edad",
                             Email = "user@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "System",
@@ -429,9 +429,9 @@ namespace Test1.Server.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDI5IWtDzLh63XgeJgEO2Fiw0o5rNYDT3ePhhUbdqIfO5RsUki3lL/ncWVvqJND8mg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH7MhrPis9x9EkygeT0nQPZUmA/fdfq+VNMyaUQFdZK9n4gMheH6847PPhIEwwyaUw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5309bd4f-2963-4c9e-a9e0-2fbe7c6648e2",
+                            SecurityStamp = "16d1ba43-6aee-434f-b312-8ef34b7a919a",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });
@@ -510,8 +510,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2116),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2142),
+                            DateCreated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(4889),
+                            DateUpdated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(4952),
                             Name = "Black",
                             UpdatedBy = "System"
                         },
@@ -519,8 +519,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2144),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2146),
+                            DateCreated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(4957),
+                            DateUpdated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(4960),
                             Name = "Blue",
                             UpdatedBy = "System"
                         });
@@ -595,8 +595,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2279),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2281),
+                            DateCreated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5176),
+                            DateUpdated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5180),
                             Name = "Toyota",
                             UpdatedBy = "System"
                         },
@@ -604,8 +604,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2283),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2285),
+                            DateCreated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5183),
+                            DateUpdated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5186),
                             Name = "BMW",
                             UpdatedBy = "System"
                         });
@@ -643,8 +643,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2341),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2343),
+                            DateCreated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5273),
+                            DateUpdated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5276),
                             Name = "Prius",
                             UpdatedBy = "System"
                         },
@@ -652,8 +652,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2345),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2346),
+                            DateCreated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5279),
+                            DateUpdated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5281),
                             Name = "Vitz",
                             UpdatedBy = "System"
                         },
@@ -661,8 +661,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2348),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2349),
+                            DateCreated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5284),
+                            DateUpdated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5286),
                             Name = "3 Series",
                             UpdatedBy = "System"
                         },
@@ -670,8 +670,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2351),
-                            DateUpdated = new DateTime(2023, 8, 25, 17, 52, 36, 200, DateTimeKind.Local).AddTicks(2352),
+                            DateCreated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5289),
+                            DateUpdated = new DateTime(2023, 9, 4, 14, 32, 43, 89, DateTimeKind.Local).AddTicks(5291),
                             Name = "X5",
                             UpdatedBy = "System"
                         });
