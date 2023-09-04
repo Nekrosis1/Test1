@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Test1.Server.Data;
 using Test1.Server.Models;
 using Microsoft.AspNetCore.Identity;
+using Test1.Server.IRepository;
+using Test1.Server.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,8 @@ builder.Services.AddIdentityServer()
 
 builder.Services.AddAuthentication()
 	.AddIdentityServerJwt();
+
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

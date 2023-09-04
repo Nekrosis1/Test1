@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Test1.Server.Data;
+using Test1.Server.IRepository;
 using Test1.Shared.Domain;
 
 namespace Test1.Server.Controllers
@@ -10,22 +11,23 @@ namespace Test1.Server.Controllers
     [ApiController]
     public class MakesController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public MakesController(ApplicationDbContext context)
+        public MakesController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: api/Makes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Make>>> GetMakes()
+        public async Task<IActionResult> GetMakes()
         {
-            if (_context.Makes == null)
+            if (_unitOfWork.Makes == null)
             {
                 return NotFound();
             }
-            return await _context.Makes.ToListAsync();
+            var makes = /// at 21  >> 3:40
+            return await _unitOfWork.Makes.GetAll();
         }
 
         // GET: api/Makes/5
