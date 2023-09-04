@@ -94,7 +94,7 @@ namespace Test1.Server.Controllers
         private async Task<bool> ModelExists(int id)
         {
             var model = await _unitOfWork.Models.Get(q => q.Id == id);
-            return model == null; //should this be "!="?
+            return model != null;
         }
     }
 }

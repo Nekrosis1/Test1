@@ -100,7 +100,7 @@ namespace Test1.Server.Controllers
         private async Task<bool> MakeExists(int id)
         {
             var make = await _unitOfWork.Makes.Get(q => q.Id == id);
-            return make == null; //should this be "!="?
+            return make != null;
         }
     }
 }

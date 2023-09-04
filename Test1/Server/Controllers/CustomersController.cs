@@ -100,7 +100,7 @@ namespace Test1.Server.Controllers
         private async Task<bool> CustomerExists(int id)
         {
             var customer = await _unitOfWork.Customers.Get(q => q.Id == id);
-            return customer == null; //should this be "!="?
+            return customer != null;
         }
     }
 }

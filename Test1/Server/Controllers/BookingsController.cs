@@ -95,7 +95,7 @@ namespace Test1.Server.Controllers
         private async Task<bool> BookingExists(int id)
         {
             var booking = await _unitOfWork.Bookings.Get(q => q.Id == id);
-            return booking == null; //should this be "!="?
+            return booking != null;
         }
     }
 }

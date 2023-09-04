@@ -100,7 +100,7 @@ namespace Test1.Server.Controllers
         private async Task<bool> ColorExists(int id)
         {
             var color = await _unitOfWork.Colors.Get(q => q.Id == id);
-            return color == null; //should this be "!="?
+            return color != null;
         }
     }
 }

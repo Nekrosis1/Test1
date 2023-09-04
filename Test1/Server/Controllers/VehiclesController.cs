@@ -93,7 +93,7 @@ namespace Test1.Server.Controllers
         private async Task<bool> VehicleExists(int id)
         {
             var vehicle = await _unitOfWork.Vehicles.Get(q => q.Id == id);
-            return vehicle == null; //should this be "!="?
+            return vehicle != null;
         }
     }
 }
