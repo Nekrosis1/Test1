@@ -8,12 +8,22 @@ namespace Test1.Server.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
+        private IGenericRepository<Booking> _bookings;
+        private IGenericRepository<Color> _colors;
+        private IGenericRepository<Customer> _customers;
         private IGenericRepository<Make> _makes;
+        private IGenericRepository<Model> _models;
+        private IGenericRepository<Vehicle> _vehicles;
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
         }
+        public IGenericRepository<Booking> Bookings => _bookings ??= new GenericRepository<Booking>(_context);
+        public IGenericRepository<Color> Colors => _colors ??= new GenericRepository<Color>(_context);
+        public IGenericRepository<Customer> Customers => _customers ??= new GenericRepository<Customer>(_context);
         public IGenericRepository<Make> Makes => _makes ??= new GenericRepository<Make>(_context);
+        public IGenericRepository<Model> Models => _models ??= new GenericRepository<Model>(_context);
+        public IGenericRepository<Vehicle> Vehicles => _vehicles ??= new GenericRepository<Vehicle>(_context);
 
         public void Dispose()
         {

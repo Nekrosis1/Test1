@@ -10,59 +10,59 @@ namespace Test1.Server.Controllers
     //[Authorize]
     [Route("[controller]")]
     [ApiController]
-    public class MakesController : ControllerBase
+    public class ColorsController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public MakesController(IUnitOfWork unitOfWork)
+        public ColorsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        // GET: /Makes
+        // GET: /Colors
         [HttpGet]
-        public async Task<IActionResult> GetMakes()
+        public async Task<IActionResult> GetColors()
         {
-            var makes = await _unitOfWork.Makes.GetAll();
-            return Ok(makes);
+            var colors = await _unitOfWork.Colors.GetAll();
+            return Ok(colors);
         }
 
-        // GET: /Makes/5
+        // GET: /Colors/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetMake(int id)
+        public async Task<IActionResult> GetColor(int id)
         {
-            var make = await _unitOfWork.Makes.Get(q => q.Id == id);
+            var color = await _unitOfWork.Colors.Get(q => q.Id == id);
 
-            if (make == null)
+            if (color == null)
             {
                 return NotFound();
             }
 
-            return Ok(make);
+            return Ok(color);
         }
 
-        // POST: /Makes
+        // POST: /Colors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Make>> PostMake(Make make)
+        public async Task<ActionResult<Color>> PostColor(Color color)
         {
 
-            await _unitOfWork.Makes.Insert(make);
+            await _unitOfWork.Colors.Insert(color);
             await _unitOfWork.Save(HttpContext);
 
-            return CreatedAtAction("GetMake", new { id = make.Id }, make);
+            return CreatedAtAction("GetColor", new { id = color.Id }, color);
         }
 
-        // PUT: /Makes/5
+        // PUT: /Colors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMake(int id, Make make)
+        public async Task<IActionResult> PutColor(int id, Color color)
         {
-            if (id != make.Id)
+            if (id != color.Id)
             {
                 return BadRequest();
             }
-            _unitOfWork.Makes.Update(make);
+            _unitOfWork.Colors.Update(color);
 
             try
             {
@@ -70,7 +70,7 @@ namespace Test1.Server.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!await MakeExists(id))
+                if (!await ColorExists(id))
                 {
                     return NotFound();
                 }
@@ -83,24 +83,24 @@ namespace Test1.Server.Controllers
             return NoContent();
         }
 
-        // DELETE: /Makes/5
+        // DELETE: /Colors/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMake(int id)
+        public async Task<IActionResult> DeleteColor(int id)
         {
-            var make = await _unitOfWork.Makes.Get(q => q.Id == id);
-            if (make == null)
+            var color = await _unitOfWork.Colors.Get(q => q.Id == id);
+            if (color == null)
             {
                 return NotFound();
             }
-            await _unitOfWork.Makes.Delete(id);
+            await _unitOfWork.Colors.Delete(id);
             await _unitOfWork.Save(HttpContext);
             return NoContent();
         }
 
-        private async Task<bool> MakeExists(int id)
+        private async Task<bool> ColorExists(int id)
         {
-            var make = await _unitOfWork.Makes.Get(q => q.Id == id);
-            return make == null; //should this be "!="?
+            var color = await _unitOfWork.Colors.Get(q => q.Id == id);
+            return color == null; //should this be "!="?
         }
     }
 }

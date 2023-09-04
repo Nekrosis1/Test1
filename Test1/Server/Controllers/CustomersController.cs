@@ -10,59 +10,59 @@ namespace Test1.Server.Controllers
     //[Authorize]
     [Route("[controller]")]
     [ApiController]
-    public class MakesController : ControllerBase
+    public class CustomersController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public MakesController(IUnitOfWork unitOfWork)
+        public CustomersController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        // GET: /Makes
+        // GET: /Customers
         [HttpGet]
-        public async Task<IActionResult> GetMakes()
+        public async Task<IActionResult> GetCustomers()
         {
-            var makes = await _unitOfWork.Makes.GetAll();
-            return Ok(makes);
+            var customers = await _unitOfWork.Customers.GetAll();
+            return Ok(customers);
         }
 
-        // GET: /Makes/5
+        // GET: /Customers/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetMake(int id)
+        public async Task<IActionResult> GetCustomer(int id)
         {
-            var make = await _unitOfWork.Makes.Get(q => q.Id == id);
+            var customer = await _unitOfWork.Customers.Get(q => q.Id == id);
 
-            if (make == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return Ok(make);
+            return Ok(customer);
         }
 
-        // POST: /Makes
+        // POST: /Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Make>> PostMake(Make make)
+        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
 
-            await _unitOfWork.Makes.Insert(make);
+            await _unitOfWork.Customers.Insert(customer);
             await _unitOfWork.Save(HttpContext);
 
-            return CreatedAtAction("GetMake", new { id = make.Id }, make);
+            return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
         }
 
-        // PUT: /Makes/5
+        // PUT: /Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMake(int id, Make make)
+        public async Task<IActionResult> PutCustomer(int id, Customer customer)
         {
-            if (id != make.Id)
+            if (id != customer.Id)
             {
                 return BadRequest();
             }
-            _unitOfWork.Makes.Update(make);
+            _unitOfWork.Customers.Update(customer);
 
             try
             {
@@ -70,7 +70,7 @@ namespace Test1.Server.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!await MakeExists(id))
+                if (!await CustomerExists(id))
                 {
                     return NotFound();
                 }
@@ -83,24 +83,24 @@ namespace Test1.Server.Controllers
             return NoContent();
         }
 
-        // DELETE: /Makes/5
+        // DELETE: /Customers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMake(int id)
+        public async Task<IActionResult> DeleteCustomer(int id)
         {
-            var make = await _unitOfWork.Makes.Get(q => q.Id == id);
-            if (make == null)
+            var customer = await _unitOfWork.Customers.Get(q => q.Id == id);
+            if (customer == null)
             {
                 return NotFound();
             }
-            await _unitOfWork.Makes.Delete(id);
+            await _unitOfWork.Customers.Delete(id);
             await _unitOfWork.Save(HttpContext);
             return NoContent();
         }
 
-        private async Task<bool> MakeExists(int id)
+        private async Task<bool> CustomerExists(int id)
         {
-            var make = await _unitOfWork.Makes.Get(q => q.Id == id);
-            return make == null; //should this be "!="?
+            var customer = await _unitOfWork.Customers.Get(q => q.Id == id);
+            return customer == null; //should this be "!="?
         }
     }
 }
