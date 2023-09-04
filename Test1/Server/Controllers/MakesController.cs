@@ -62,7 +62,7 @@ namespace Test1.Server.Controllers
 
             try
             {
-                await _unitOfWork.Save();
+                await _unitOfWork.Save(HttpContext);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -89,7 +89,7 @@ namespace Test1.Server.Controllers
             //    return Problem("Entity set 'ApplicationDbContext.Makes'  is null.");
             //}
             await _unitOfWork.Makes.Insert(make);
-            await _unitOfWork.Save();
+            await _unitOfWork.Save(HttpContext);
 
             return CreatedAtAction("GetMake", new { id = make.Id }, make);
         }
@@ -108,7 +108,7 @@ namespace Test1.Server.Controllers
                 return NotFound();
             }
             await _unitOfWork.Makes.Delete(id);
-            await _unitOfWork.Save();
+            await _unitOfWork.Save(HttpContext);
             return NoContent();
         }
 

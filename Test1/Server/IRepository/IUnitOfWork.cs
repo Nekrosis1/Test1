@@ -4,7 +4,7 @@ namespace Test1.Server.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {
-        Task Save();
+        Task Save(HttpContext httpContext);
         IGenericRepository<Make> Makes { get; }
         //IGenericRepository<Model> Models { get;}
         //IGenericRepository<Vehicle> Vehicles { get;}
