@@ -20,7 +20,8 @@ namespace Test1.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetVehicles()
         {
-            var vehicles = await _unitOfWork.Vehicles.GetAll();
+            var includes = new List<string> { "Make", "Model", "Color" };
+            var vehicles = await _unitOfWork.Vehicles.GetAll(includes: includes);
             return Ok(vehicles);
         }
 
@@ -28,8 +29,8 @@ namespace Test1.Server.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVehicles(int id)
         {
-            var vehicles = await _unitOfWork.Vehicles.Get(q => q.Id == id);
-
+            var includes = new List<string> { "Make", "Model", "Color", "Bookings" };
+            var vehicles = await _unitOfWork.Vehicles.Get(q => q.Id == id, includes: includes);
             if (vehicles == null)
             {
                 return NotFound();

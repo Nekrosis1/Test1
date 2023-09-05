@@ -39,7 +39,9 @@ namespace Test1.Server.Repository
             return await query.AsNoTracking().FirstOrDefaultAsync(expression);
         }
 
-        public async Task<IList<T>> GetAll(Expression<Func<T, bool>>? expression, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy, List<string>? includes)
+        public async Task<IList<T>> GetAll(Expression<Func<T, bool>>? expression,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy,
+            List<string>? includes)
         {
             IQueryable<T> query = _db;
             if (expression != null)
@@ -48,9 +50,9 @@ namespace Test1.Server.Repository
             }
             if (includes != null)
             {
-                foreach (var include in includes)
+                foreach (var prop in includes)
                 {
-                    query = query.Include(include);
+                    query = query.Include(prop);
                 }
             }
             if (orderBy != null)
