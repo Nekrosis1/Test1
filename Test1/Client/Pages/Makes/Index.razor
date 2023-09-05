@@ -58,7 +58,7 @@ else
         var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete{make.Name}?");
         if (confirm)
         {
-        await _client.DeleteAsync($"{Endpoints.MakesEndpoint}{makeId}");
+        await _client.DeleteAsync($"{Endpoints.MakesEndpoint}/{makeId}");
         await OnInitializedAsync();
         }
     }

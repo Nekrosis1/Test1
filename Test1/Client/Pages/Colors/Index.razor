@@ -58,7 +58,7 @@ else
         var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete{color.Name}?");
         if (confirm)
         {
-        await _client.DeleteAsync($"{Endpoints.ColorsEndpoint}{colorId}");
+        await _client.DeleteAsync($"{Endpoints.ColorsEndpoint}/{colorId}");
         await OnInitializedAsync();
         }
     }
