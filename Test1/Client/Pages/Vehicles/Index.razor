@@ -9,13 +9,18 @@
 <hr />
 <br />
 
+<a href="/vehicles/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span> 
+    Add New Vehicle
+</a>
+
 @if (Vehicles == null)
 {
     <div class="alert alert-info"> Loading Vehicles...</div>
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table">
         <thead>
             <tr>
                 <th>Make</th>
