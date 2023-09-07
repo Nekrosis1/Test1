@@ -60,7 +60,7 @@ else
     async Task Delete(int makeId)
     {
         var make = Makes.First(q => q.Id == makeId);
-        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete{make.Name}?");
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {make.Name}?");
         if (confirm)
         {
         await _client.DeleteAsync($"{Endpoints.MakesEndpoint}/{makeId}");

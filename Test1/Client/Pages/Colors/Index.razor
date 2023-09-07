@@ -33,10 +33,10 @@ else
                 <tr>
                     <td>@color.Name</td>
                     <td>
-                        <a href="/color/view/@color.Id" class="btn btn-primary">
+                        <a href="/colors/view/@color.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/color/edit/@color.Id" class="btn btn-warning">
+                        <a href="/colors/edit/@color.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>    
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(color.Id))">
@@ -60,7 +60,7 @@ else
     async Task Delete(int colorId)
     {
         var color = Colors.First(q => q.Id == colorId);
-        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete{color.Name}?");
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {color.Name}?");
         if (confirm)
         {
         await _client.DeleteAsync($"{Endpoints.ColorsEndpoint}/{colorId}");

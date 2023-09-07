@@ -1,0 +1,28 @@
+﻿<EditForm Model="@make" OnValidSubmit="@OnValidSubmit">
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+
+
+	<div class="form-group">
+		<label>Name:</label>
+		<div>
+			<InputText class="form-control" @bind-Value="@make.Name" />
+			<ValidationMessage For="@(() => make.Name)" />
+		</div>
+	</div>
+
+	<br />
+	<button type="submit" class="btn btn-success">
+		@ButtonText
+	</button>
+	<br />
+	<BackToList Target="makes" />
+
+</EditForm>
+
+@code {
+	[Parameter] public Make make { get; set; }
+	[Parameter] public string ButtonText { get; set; } = "Save";
+	[Parameter] public EventCallback OnValidSubmit { get; set; }
+
+}

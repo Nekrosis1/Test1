@@ -87,7 +87,7 @@ namespace Test1.Server.Controllers
             {
                 return NotFound();
             }
-            await _unitOfWork.Makes.Delete(id);
+            await _unitOfWork.Models.Delete(id);
             await _unitOfWork.Save(HttpContext);
             return NoContent();
         }

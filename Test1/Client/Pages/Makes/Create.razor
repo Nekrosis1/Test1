@@ -7,25 +7,7 @@
 <hr />
 <br />
 
-<EditForm Model="@make" OnValidSubmit="CreateMake">
-	<DataAnnotationsValidator />
-	<ValidationSummary />
-
-
-	<div class="form-group">
-		<label>Name:</label>
-		<div>
-			<InputText class="form-control" @bind-Value="@make.Name" />
-			<ValidationMessage For="@(() => make.Name)" />
-		</div>
-	</div>
-
-	<br />
-	<button type="submit" class="btn btn-success">
-		Add Make
-	</button>
-
-</EditForm>
+<FormComponent ButtonText="Add Make" make="make" OnValidSubmit="CreateMake" />
 
 
 @code {

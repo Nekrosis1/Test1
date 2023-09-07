@@ -5,6 +5,7 @@ using Test1.Server.Models;
 using Microsoft.AspNetCore.Identity;
 using Test1.Server.IRepository;
 using Test1.Server.Repository;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,9 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
-builder.Services.AddControllersWithViews().AddNewtonsoftJson(op => op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.ignore);
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(
+	op => op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+	);
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

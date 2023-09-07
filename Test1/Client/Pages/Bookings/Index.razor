@@ -37,10 +37,10 @@ else
                     <td>@booking.DateCreated.Date.ToString("dd MMMM yyyy")</td>
                     <td>@((booking.DateIn - booking.DateOut).TotalDays.ToString())</td>
                     <td>
-                        <a href="/booking/view/@booking.Id" class="btn btn-primary">
+                        <a href="/bookings/view/@booking.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/booking/edit/@booking.Id" class="btn btn-warning">
+                        <a href="/bookings/edit/@booking.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(booking.Id))">
@@ -64,7 +64,7 @@ else
     async Task Delete(int bookingId)
     {
         var booking = Bookings.First(q => q.Id == bookingId);
-        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete{booking.Customer.TaxId}?");
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {booking.Customer.TaxId}?");
         if (confirm)
         {
             await _client.DeleteAsync($"{Endpoints.BookingsEndpoint}/{bookingId}");
