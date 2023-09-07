@@ -44,6 +44,17 @@
 		</div>
 	</div>
 
+	@if (booking.Id > 0)
+	{
+		<div class="from-group">
+			<label>Date In:</label>
+			<div>
+				<InputDate class="form-control" @bind-Value="booking.DateIn" />
+				<ValidationMessage For="(() => booking.DateIn)" />
+			</div>
+		</div>
+	}
+
 	<br />
 	<button type="submit" class="btn btn-success">
 		@ButtonText
