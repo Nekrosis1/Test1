@@ -20,8 +20,9 @@ namespace Test1.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetVehicles()
         {
-            var includes = new List<string> { "Make", "Model", "Color" };
-            var vehicles = await _unitOfWork.Vehicles.GetAll(includes: includes);
+            //var includes = new List<string> { "Make", "Model", "Color" };
+            var vehicles = await _unitOfWork.Vehicles.GetAll(includes: q =>
+            q.Include(x => x.Color).Include(x => x.Make).Include(x => x.Model));
             return Ok(vehicles);
         }
 
@@ -29,9 +30,11 @@ namespace Test1.Server.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVehicles(int id)
         {
-            var includes = new List<string> { "Make", "Model", "Color", "Bookings" };
-            var vehicles = await _unitOfWork.Vehicles.Get(q => q.Id == id, includes: includes);
-            if (vehicles == null)
+            //var includes = new List<string> { "Make", "Model", "Color", "Bookings" };
+
+            var vehicles = await _unitOfWork.Vehicles.Get(q => q.Id == id, includes: q =>
+			 q.Include(x => x.Color).Include(x => x.Make).Include(x => x.Model).Include(x => x.Bookings));
+			if (vehicles == null)
             {
                 return NotFound();
             }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 using Test1.Server.Data;
 using Test1.Server.IRepository;
@@ -26,22 +27,27 @@ namespace Test1.Server.Repository
             _db.RemoveRange(entities);
         }
 
-        public async Task<T> Get(Expression<Func<T, bool>> expression, List<string>? includes)
+        // includes are delegate func defining what objects to include in the query,
+        // so the whole object gets properly passed on in the requested parent object
+        //
+        public async Task<T> Get(Expression<Func<T, bool>> expression,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null)
         {
             IQueryable<T> query = _db;
-            if (includes != null)
-            {
-                foreach (var include in includes)
-                {
-                    query = query.Include(include);
-                }
-            }
-            return await query.AsNoTracking().FirstOrDefaultAsync(expression);
+			if (includes != null)
+			{
+				query = includes(query);
+			}
+            var result = await query.AsNoTracking().Where(expression).ToListAsync();
+			return result.FirstOrDefault();
         }
 
-        public async Task<IList<T>> GetAll(Expression<Func<T, bool>>? expression,
+		// includes are delegate func defining what objects to include in the query,
+		// so the whole object gets properly passed on in the requested parent object
+		//
+		public async Task<IList<T>> GetAll(Expression<Func<T, bool>>? expression,
             Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy,
-            List<string>? includes)
+			Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null)
         {
             IQueryable<T> query = _db;
             if (expression != null)
@@ -50,10 +56,7 @@ namespace Test1.Server.Repository
             }
             if (includes != null)
             {
-                foreach (var prop in includes)
-                {
-                    query = query.Include(prop);
-                }
+                query = includes(query);
             }
             if (orderBy != null)
             {
