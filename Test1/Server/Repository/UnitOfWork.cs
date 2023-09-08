@@ -1,6 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow.ValueContentAnalysis;
+using Microsoft.EntityFrameworkCore;
+using System.Drawing.Text;
+using System.Security.Claims;
 using Test1.Server.Data;
 using Test1.Server.IRepository;
+using Test1.Server.Models;
 using Test1.Shared.Domain;
 
 namespace Test1.Server.Repository
@@ -14,9 +19,12 @@ namespace Test1.Server.Repository
         private IGenericRepository<Make> _makes;
         private IGenericRepository<Model> _models;
         private IGenericRepository<Vehicle> _vehicles;
-        public UnitOfWork(ApplicationDbContext context)
+
+        private UserManager<ApplicationUser> _userManager;
+        public UnitOfWork(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         public IGenericRepository<Booking> Bookings => _bookings ??= new GenericRepository<Booking>(_context);
         public IGenericRepository<Color> Colors => _colors ??= new GenericRepository<Color>(_context);
@@ -33,18 +41,20 @@ namespace Test1.Server.Repository
 
         public async Task Save(HttpContext httpContext)
         {
-            var user = httpContext.User.Identity.Name;
+            //var user = httpContext.User.Identity.Name; //doesnt work, httpContext only has Token of user
+            var userId = httpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = await _userManager.FindByIdAsync(userId);
             var entries = _context.ChangeTracker.Entries()
                 .Where(q => q.State == EntityState.Modified ||
                 q.State == EntityState.Added);
             foreach (var entry in entries)
             {
                 ((BaseDomainModel)entry.Entity).DateUpdated = DateTime.Now;
-                ((BaseDomainModel)entry.Entity).UpdatedBy = user;
+                ((BaseDomainModel)entry.Entity).UpdatedBy = user.UserName;
                 if(entry.State == EntityState.Added)
                 {
                     ((BaseDomainModel)entry.Entity).DateCreated = DateTime.Now;
-                    ((BaseDomainModel)entry.Entity).CreatedBy = user;
+                    ((BaseDomainModel)entry.Entity).CreatedBy = user.UserName;
                 }
             }
             await _context.SaveChangesAsync();

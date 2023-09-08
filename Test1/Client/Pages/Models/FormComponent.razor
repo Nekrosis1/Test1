@@ -2,7 +2,7 @@
 	<DataAnnotationsValidator />
 	<ValidationSummary />
 
-
+	<fieldset disabled="@Disabled">
 	<div class="form-group">
 		<label>Name:</label>
 		<div>
@@ -10,17 +10,22 @@
 			<ValidationMessage For="@(() => model.Name)" />
 		</div>
 	</div>
+	</fieldset>
 
+	@if (!Disabled)
+	{
 	<br />
 	<button type="submit" class="btn btn-success">
 		@ButtonText
 	</button>
+	}
 	<br />
 	<BackToList Target="models" />
 
 </EditForm>
 
 @code {
+	[Parameter] public bool Disabled { get; set; } = false;
 	[Parameter] public Model model { get; set; }
 	[Parameter] public string ButtonText { get; set; } = "Save";
 	[Parameter] public EventCallback OnValidSubmit { get; set; }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Test1.Server.Data;
 
@@ -11,9 +12,10 @@ using Test1.Server.Data;
 namespace Test1.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230908132310_AddedValidationToCustomer")]
+    partial class AddedValidationToCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -193,14 +195,14 @@ namespace Test1.Server.Data.Migrations
                         new
                         {
                             Id = "9e24a193-1061-45cd-be67-46cd9f4aceda",
-                            ConcurrencyStamp = "78aefa87-0c7d-449d-bec3-764904267591",
+                            ConcurrencyStamp = "f5d199aa-4860-4600-9669-01fe6ed634ab",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = "9e24a193-1061-45cd-be67-16cd9f4acedb",
-                            ConcurrencyStamp = "1f16d383-1de6-424e-9f1d-a880ea0b2e65",
+                            ConcurrencyStamp = "bde03177-ff22-454b-855d-753f9cab226e",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -403,7 +405,7 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = "52cfd4d1-bde3-45dd-86a1-e74c5dfb8a92",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a32210af-19e3-4d70-891d-e5809441dfa2",
+                            ConcurrencyStamp = "3f9e049e-5d30-4543-8063-e9e4ee64ce71",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "System",
@@ -411,9 +413,9 @@ namespace Test1.Server.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECzXUnmusk0MuPhlyFLdqqPldFgwPOYW5AbWmO/LVcomy4mF1GRVgRiBHK0tL7Ax2A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB0K5jLKd8Gv+/oSLNslJWHI7eetoLCu/m0Ivvldb6+LzJAHQlsfOqZpCWJgq7IqMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4278a366-39df-4395-9e1d-a63a06d42fff",
+                            SecurityStamp = "72c89473-caff-4790-b868-72fa2c108b2a",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -421,7 +423,7 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = "8a721152-96bd-432a-9b97-06ab6d7b6fee",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f014ec23-231d-46d7-9042-8e965f21db36",
+                            ConcurrencyStamp = "a9470aaa-cf5e-462b-b244-182566324fa0",
                             Email = "user@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "System",
@@ -429,9 +431,9 @@ namespace Test1.Server.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB7sZkFBveRvF+mq99xQ1spqVEQw6gxYpEJXUuExVLXki31A7TP/P/AOtjNR37b1Aw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJhoJfxyLZVToMsBEu+6v9pgzIU3h3HJMQqXJltIQZ01sXIrGyyYSKfHrvBgUfLO+A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8b84565a-1a1b-45ab-9a67-7a36a601a0a9",
+                            SecurityStamp = "875cd9a3-dc76-4696-a3e5-a912e9032ec7",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });
@@ -496,9 +498,7 @@ namespace Test1.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -512,8 +512,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(571),
-                            DateUpdated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(618),
+                            DateCreated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1365),
+                            DateUpdated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1420),
                             Name = "Black",
                             UpdatedBy = "System"
                         },
@@ -521,8 +521,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(621),
-                            DateUpdated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(624),
+                            DateCreated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1424),
+                            DateUpdated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1427),
                             Name = "Blue",
                             UpdatedBy = "System"
                         });
@@ -597,9 +597,7 @@ namespace Test1.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -613,8 +611,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(828),
-                            DateUpdated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(832),
+                            DateCreated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1737),
+                            DateUpdated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1742),
                             Name = "Toyota",
                             UpdatedBy = "System"
                         },
@@ -622,8 +620,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(835),
-                            DateUpdated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(838),
+                            DateCreated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1745),
+                            DateUpdated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1748),
                             Name = "BMW",
                             UpdatedBy = "System"
                         });
@@ -647,9 +645,7 @@ namespace Test1.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -663,8 +659,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(920),
-                            DateUpdated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(924),
+                            DateCreated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1841),
+                            DateUpdated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1844),
                             Name = "Prius",
                             UpdatedBy = "System"
                         },
@@ -672,8 +668,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(927),
-                            DateUpdated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(929),
+                            DateCreated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1848),
+                            DateUpdated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1850),
                             Name = "Vitz",
                             UpdatedBy = "System"
                         },
@@ -681,8 +677,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(932),
-                            DateUpdated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(934),
+                            DateCreated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1853),
+                            DateUpdated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1856),
                             Name = "3 Series",
                             UpdatedBy = "System"
                         },
@@ -690,8 +686,8 @@ namespace Test1.Server.Data.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(937),
-                            DateUpdated = new DateTime(2023, 9, 8, 15, 36, 33, 345, DateTimeKind.Local).AddTicks(939),
+                            DateCreated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1859),
+                            DateUpdated = new DateTime(2023, 9, 8, 15, 23, 9, 965, DateTimeKind.Local).AddTicks(1861),
                             Name = "X5",
                             UpdatedBy = "System"
                         });
@@ -718,7 +714,6 @@ namespace Test1.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LicensePlateNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MakeId")
@@ -734,10 +729,9 @@ namespace Test1.Server.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vin")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Year")
+                    b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

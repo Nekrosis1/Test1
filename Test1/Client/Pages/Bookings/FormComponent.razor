@@ -4,6 +4,7 @@
 	<DataAnnotationsValidator />
 	<ValidationSummary />
 
+	<fieldset disabled="@Disabled">
 	<div class="form-group">
 		<label>Vehicle: </label>
 		<div>
@@ -54,17 +55,21 @@
 			</div>
 		</div>
 	}
-
+	</fieldset>
+	 @if(!Disabled)
+	{	
 	<br />
 	<button type="submit" class="btn btn-success">
 		@ButtonText
 	</button>
+	}
 	<br />
 	<BackToList Target="bookings" />
 
 </EditForm>
 
 @code {
+	[Parameter] public bool Disabled { get; set; } = false;
 	[Parameter] public Booking booking { get; set; }
 	[Parameter] public string ButtonText { get; set; } = "Save";
 	[Parameter] public EventCallback OnValidSubmit { get; set; }
